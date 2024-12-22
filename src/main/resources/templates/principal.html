@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/principal.css}">
+    <title>Principal</title>
+</head>
+<body>
+    <!-- Mostrar el nombre del usuario -->
+    <body>
+    <!-- Mostrar el nombre del usuario -->
+    <div class="welcome--container">
+    <p>Bienvenido Usuario: <span id="username" th:text="${name}"></span></p>
+    </div>
+
+    
+    <script>
+        window.onload = function() {
+            var usernameElement = document.getElementById('username');
+            var username = usernameElement.textContent;  // Obtiene el nombre del usuario del span
+            
+            // Aquí puedes agregar cualquier funcionalidad adicional que desees
+            console.log('El usuario conectado es: ' + username);
+        };
+    </script>
+    
+    <script>
+    // Aseguramos que el texto aparezca después de 2 segundos con animación
+    window.onload = function() {
+        setTimeout(function() {
+            // Cambiar la opacidad y mover el contenedor al centro después de 2 segundos
+            const container = document.querySelector('.welcome--container');
+            container.style.opacity = 1; // Hacerlo visible
+            container.style.transform = 'translateY(0)'; // Moverlo al centro
+        }, 1000); // 1000 milisegundos = 1 segundos
+    };
+</script>
+</body>
+</html>

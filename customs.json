@@ -1,0 +1,14 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:text": {
+            "context": "span"
+        },
+        "th:if": {
+            "context": "div"
+        },
+        "th:href": {
+            "context": "link"
+        }
+    }
+}

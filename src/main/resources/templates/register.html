@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <!-- Usando th:href para que Thymeleaf maneje la ruta del archivo estático -->
+        <link rel="stylesheet" th:href="@{/styles.css}">
+    </head>
+    <body>
+        <main>
+            <div class="form">
+                <h1>Registro de usuario</h1>
+                <!-- El formulario mantiene el método POST y la acción para registrar al usuario -->
+                <form id="registerForm" method="POST" action="/web/api/usuarios/register" class="form__form">
+                    <div class="form__input-container">
+                        <label for="username">Nombre de usuario</label>
+                        <input type="text" id="username" name="username" placeholder="John Doe" required>
+                    </div>
+                    <div class="form__input-container">
+                        <label for="email">Direccion de correo electronico</label>
+                        <input type="email" id="email" name="email" placeholder="John@email.com" required>
+                    </div>
+                    <div class="form__input-container">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required placeholder="Debe contener al menos 8 caracteres">
+                    </div>
+                    <div class="form__input-containerRegister" id="register">
+                        <button type="submit">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <script>
+            // Manejo del formulario de registro
+            document.getElementById("registerForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Obtiene los valores de los campos del formulario
+                const username = document.getElementById("username").value;
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                // Valida la contraseña (mínimo 8 caracteres)
+                if (password.length < 8) {
+                    alert("La contraseña debe tener al menos 8 caracteres.");
+                    return;
+                }
+
+                // Construye el objeto de registro
+                const registerData = {
+                    username: username,
+                    email: email,
+                    password: password
+                };
+
+                // Realiza la solicitud POST al backend
+                fetch('http://localhost:8080/web/api/usuarios/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Correcto: usa coma aquí
+                    },
+                    body: JSON.stringify(registerData), // Correcto: usa coma aquí
+                })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('Registro exitoso');
+                                window.location.href = '/web/login'; // Redirige a la página de inicio de sesión
+                            } else {
+                                return response.text().then(errorMessage => {
+                                    alert('Error: ' + errorMessage);
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            alert('Error al conectarse al servidor');
+                        });
+
+            });
+        </script>
+    </body>
+</html>

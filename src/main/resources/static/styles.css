@@ -1,0 +1,156 @@
+/* Estilo global del cuerpo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e9e9e9;
+}
+
+h1{
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Contenedor principal del formulario */
+.form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Título del formulario */
+.form h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del formulario */
+.form__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Etiquetas */
+.form__form label {
+    margin-bottom: 8px;
+    font-weight:normal;
+    align-self: start;
+    margin-left: 10px;
+    font-family: sans-serif;
+    font-size: medium;
+    color:rgb(33, 32, 32);
+}
+
+/* Campos de entrada */
+.form__form input {
+    width: 100%; /* Ancho completo del contenedor */
+    max-width: 350px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que padding no altere el ancho */
+}
+
+/* Botones */
+button {
+    width: 100%; /* Ancho completo del contenedor */
+    max-width: 350px;
+    padding: 10px;
+    background-color: #fc3b21;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    box-sizing: border-box; /* Asegura que padding no altere el ancho */
+}
+
+button:hover {
+    background-color: #fc5c47;
+}
+
+.form__input-containerRegister{
+    margin-left: 23px;
+    width: 100%;
+}
+
+/* Diseño en rejilla para pantallas grandes */
+@media (min-width: 53rem) {
+    .form__form {
+        display: grid;
+        grid-template-areas:
+            "nombre nombre"
+            "email email"
+            "password password"
+            "session register";
+        column-gap: 20px;
+        row-gap: 15px;
+        justify-content: center; /* Centrar grid horizontalmente */
+    }
+
+    /* Áreas específicas para cada elemento */
+    .form__form div:nth-child(1) {
+        grid-area: nombre;
+    }
+
+    .form__form div:nth-child(2) {
+        grid-area: email;
+    }
+
+    .form__form div:nth-child(3) {
+        grid-area: password;
+    }
+
+    button:nth-of-type(1) {
+        grid-area: session;
+    }
+
+    button:nth-of-type(2) {
+        grid-area: register;
+    }
+}
+
+/* Diseño en columna para pantallas pequeñas */
+@media (max-width: 52rem) {
+    .form__form {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; /* Asegura que los elementos se alineen al ancho completo */
+        width: 100%;
+        justify-content: center;
+        gap: 15px; /* Espaciado uniforme entre los elementos */
+        flex-wrap: wrap;
+    }
+
+    .form__form label {
+        width: 100%; /* Etiqueta al ancho del input */
+        margin-bottom: 5px;
+        text-align: left; /* Alinea el texto de la etiqueta al inicio */
+    }
+
+    .form__form input {
+        width: 100%; /* Todos los campos ocupan el mismo ancho */
+        max-width: 350px;
+        padding: 10px;
+        box-sizing: border-box; /* Evita que el padding afecte el ancho */
+    }
+
+    button {
+        width: 100%; /* Botones con el mismo ancho que los inputs */
+        max-width: 350px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+}
+
